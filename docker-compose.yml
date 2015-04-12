@@ -1,0 +1,18 @@
+teamcity:
+  build: teamcity
+  ports:
+  - "8111:8111"
+  volumes:
+  - /home/pi/teamcity/storage:/root/BuildServer
+
+teamcityagent:
+  build: teamcity-agent
+  links:
+  - teamcity
+  - mysql
+
+mysql:
+  image: armbuild/orchardup-mysql
+  environment:
+    MYSQL_DATABASE: aufhaxedev_testing
+    MYSQL_ROOT_PASSWORD: root
