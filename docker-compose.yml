@@ -3,7 +3,7 @@ teamcity:
   ports:
   - "8111:8111"
   volumes:
-  - /home/pi/teamcity/storage:/root/BuildServer
+  - ./teamcity/storage:/root/BuildServer
 
 teamcityagent:
   build: teamcity-agent
