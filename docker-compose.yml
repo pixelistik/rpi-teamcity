@@ -1,5 +1,6 @@
 teamcity:
   build: teamcity
+  restart: always
   ports:
   - "8111:8111"
   volumes:
@@ -7,12 +8,14 @@ teamcity:
 
 teamcityagent:
   build: teamcity-agent
+  restart: always
   links:
   - teamcity
   - mysql
 
 mysql:
   image: armbuild/orchardup-mysql
+  restart: always
   environment:
     MYSQL_DATABASE: aufhaxedev_testing
     MYSQL_ROOT_PASSWORD: root
