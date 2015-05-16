@@ -1,4 +1,4 @@
-FROM teamcity
+FROM rpiteamcity_teamcity 
 MAINTAINER pixelistik <code@pixelistik.de>
 ADD buildAgent.properties TeamCity/buildAgent/conf/
 
