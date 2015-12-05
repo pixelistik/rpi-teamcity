@@ -1,4 +1,4 @@
-FROM oraclejdk-8
+FROM teamcity_oraclejdk-8
 MAINTAINER pixelistik <code@pixelistik.de>
 
 RUN wget -v https://download.jetbrains.com/teamcity/TeamCity-9.0.3.tar.gz && \
