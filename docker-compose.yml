@@ -2,7 +2,7 @@ oraclejdk-8:
   build: oraclejdk-8
   container_name: oraclejdk-8
   command: "true"
-  restart: no
+  restart: "no"
 
 teamcity:
   build: teamcity
