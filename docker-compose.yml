@@ -16,4 +16,4 @@ agent-alice:
   build: agent-alice
   restart: always
   links:
-  - teamcity
+  - server
