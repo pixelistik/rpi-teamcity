@@ -5,15 +5,15 @@ oraclejdk-8:
   restart: "no"
 
 teamcity:
-  build: teamcity
+  build: server
   restart: always
   ports:
   - "8111:8111"
   volumes:
-  - ./teamcity/storage:/root/BuildServer
+  - ./server/storage:/root/BuildServer
 
-teamcityagent:
-  build: teamcity-agent
+teamcity-agent:
+  build: alice
   restart: always
   links:
   - teamcity

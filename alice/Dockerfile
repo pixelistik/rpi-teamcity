@@ -1,5 +1,5 @@
-FROM rpi-teamcity_teamcity
-MAINTAINER pixelistik <code@pixelistik.de>
+FROM rpi-teamcity_server
+MAINTAINER upagge <upagge@mail.ru>
 ADD buildAgent.properties TeamCity/buildAgent/conf/
 
 RUN apt-get update && \
