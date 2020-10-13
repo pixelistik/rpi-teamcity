@@ -1,9 +1,11 @@
-FROM sdhibit/rpi-raspbian
-MAINTAINER upagge <upagge@mail.ru>
+FROM schachr/raspbian-stretch
+LABEL maintainer="Vova Lantsov"
+LABEL contact_email="vova.lantsov.dev@gmail.com"
+LABEL telegram="https://t.me/vova_lantsov"
 
 # https://gist.github.com/jpetazzo/6127116
 RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup && \
-    echo "Acquire::http {No-Cache=True;};" > /etc/apt/apt.conf.d/no-cache
+    echo 'Acquire::Languages "none";' > /etc/apt/apt.conf.d/no-lang
 
 RUN apt-get update && \
     apt-get install -y -q wget ca-certificates && \
@@ -12,4 +14,5 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get upgrade -y
 
-RUN apt-get install -y oracle-java8-jdk
+RUN apt-get install -y default-jdk
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
