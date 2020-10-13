@@ -1,5 +1,8 @@
 FROM rpi-teamcity_server
-MAINTAINER upagge <upagge@mail.ru>
+LABEL maintainer="uPagge"
+LABEL contact_email="upagge@mail.ru"
+LABEL telegram="https://t.me/uPagge"
+
 ADD buildAgent.properties TeamCity/buildAgent/conf/
 
 RUN apt-get update && \
