@@ -10,6 +10,9 @@ services:
   server:
     build: server
     restart: always
+    container_name: teamcity_server
+    depends_on:
+      - jdk11
     ports:
       - "8111:8111"
     volumes:
@@ -20,6 +23,9 @@ services:
   agent-alice:
     build: agent-alice
     restart: always
+    container_name: teamcity_agent
+    depends_on:
+      - server
     networks:
       - teamcity_network
 
