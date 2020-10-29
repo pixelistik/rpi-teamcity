@@ -1,6 +1,6 @@
 FROM schachr/raspbian-stretch
 LABEL maintainer="Vova Lantsov"
-LABEL contact_email="vova.lantsov.dev@gmail.com"
+LABEL contact_email="contact@vova-lantsov.dev"
 LABEL telegram="https://t.me/vova_lantsov"
 
 # https://gist.github.com/jpetazzo/6127116
