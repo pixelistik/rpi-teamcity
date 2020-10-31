@@ -1,27 +1,40 @@
-oraclejdk-8:
-  build: oraclejdk-8
-  container_name: oraclejdk-8
-  command: "true"
-  restart: "no"
+version: '3.7'
 
-teamcity:
-  build: teamcity
-  restart: always
-  ports:
-  - "8111:8111"
-  volumes:
-  - ./teamcity/storage:/root/BuildServer
+services:
+  jdk11:
+    build: jdk11
+    container_name: jdk11
+    command: "true"
+    restart: "no"
+    networks:
+      - teamcity_network
 
-teamcityagent:
-  build: teamcity-agent
-  restart: always
-  links:
-  - teamcity
-  - mysql
+  server:
+    build: server
+    restart: always
+    container_name: teamcity_server
+    depends_on:
+      - jdk11
+    ports:
+      - "8111:8111"
+    volumes:
+      - teamcity_server_storage:/root/BuildServer
+    networks:
+      - teamcity_network
 
-mysql:
-  image: armbuild/orchardup-mysql
-  restart: always
-  environment:
-    MYSQL_DATABASE: aufhaxedev_testing
-    MYSQL_ROOT_PASSWORD: root
+  agent-alice:
+    build: agent-alice
+    restart: always
+    container_name: teamcity_agent
+    depends_on:
+      - server
+    networks:
+      - teamcity_network
+
+networks:
+  teamcity_network:
+    name: teamcity_network
+
+volumes:
+  teamcity_server_storage:
+    name: teamcity_server_storage
